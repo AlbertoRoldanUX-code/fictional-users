@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "./Form";
 import List from "./List";
 import Modal from "./Modal";
+import Modal2 from "./Modal2";
 
 const dummyUsers = [
   {
@@ -20,12 +21,18 @@ function App() {
   const [users, setUsers] = useState(dummyUsers);
 
   const [isValid, setIsValid] = useState(true);
+  const [isValidAge, setIsValidAge] = useState(true);
 
   const onSubmitHandler = function (userData) {
     userData = { id: Math.random().toString(), ...userData };
 
     if (userData.name === "" && userData.age === 0) {
       setIsValid(false);
+      return;
+    }
+
+    if (userData.age < 0) {
+      setIsValidAge(false);
       return;
     }
 
@@ -38,11 +45,16 @@ function App() {
     setIsValid(data);
   };
 
+  const onClickHandler2 = function (data) {
+    setIsValidAge(data);
+  };
+
   return (
     <div>
       <Form onSubmit={onSubmitHandler} />
       <List users={users} />
       {!isValid && <Modal onClick={onClickHandler} />}
+      {!isValidAge && <Modal2 onClick={onClickHandler2} />}
     </div>
   );
 }
@@ -59,6 +71,6 @@ export default App;
 
 // 4º Dismiss modal window by clicking okay and by clicking on the backdrop. ✔
 
-// 5º Display modal window that says Please enter a valid age (>0) if entered a negative age.
+// 5º Display modal window that says Please enter a valid age (>0) if entered a negative age. ✔
 
 // 6º Reset inputs when adding a user successfully.
