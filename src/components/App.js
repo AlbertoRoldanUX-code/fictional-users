@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./Form";
+import List from "./List";
+
+const dummyUsers = [
+  {
+    name: "Pablo",
+    age: 23,
+    id: 1,
+  },
+  {
+    name: "Pumpa",
+    age: 44,
+    id: 2,
+  },
+];
 
 function App() {
+  const [users, setUsers] = useState(dummyUsers);
+
+  const onSubmitHandler = function (userData) {
+    userData = { id: Math.random().toString(), ...userData };
+    setUsers((prevUsers) => {
+      return [userData, ...prevUsers];
+    });
+  };
+
   return (
     <div>
-      <Form />
+      <Form onSubmit={onSubmitHandler} />
+      <List users={users} />
     </div>
   );
 }
@@ -13,7 +37,7 @@ export default App;
 
 // 1º Create a component with 2 input fields, 2 labels and a submit button. 1º Label is Username and 2º label is Age (Years), button is Add User. ✔
 
-// 2º When adding a new user, it gets rendered on a list component below. Name + (years + years old).
+// 2º When adding a new user, it gets rendered on a list component below. Name + (years + years old). ✔
 
 // 3º Display modal window when clicking on the button and both inputs are empty: Invalid input
 // Please enter a valid name and age (non empty values)
