@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import List from "./List";
+import Modal from "./Modal";
 
 const dummyUsers = [
   {
@@ -18,8 +19,15 @@ const dummyUsers = [
 function App() {
   const [users, setUsers] = useState(dummyUsers);
 
+  const [isValid, setIsValid] = useState(true);
+
   const onSubmitHandler = function (userData) {
     userData = { id: Math.random().toString(), ...userData };
+
+    if (userData.name === "" && userData.age === 0) {
+      setIsValid(false);
+    }
+
     setUsers((prevUsers) => {
       return [userData, ...prevUsers];
     });
@@ -29,6 +37,7 @@ function App() {
     <div>
       <Form onSubmit={onSubmitHandler} />
       <List users={users} />
+      {!isValid && <Modal />}
     </div>
   );
 }
@@ -41,7 +50,7 @@ export default App;
 
 // 3º Display modal window when clicking on the button and both inputs are empty: Invalid input
 // Please enter a valid name and age (non empty values)
-// Okay button
+// Okay button ✔
 
 // 4º Dismiss modal window by clicking okay and by clicking on the backdrop.
 
