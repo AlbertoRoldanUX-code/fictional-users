@@ -26,6 +26,7 @@ function App() {
 
     if (userData.name === "" && userData.age === 0) {
       setIsValid(false);
+      return;
     }
 
     setUsers((prevUsers) => {
@@ -33,11 +34,15 @@ function App() {
     });
   };
 
+  const onClickHandler = function (data) {
+    setIsValid(data);
+  };
+
   return (
     <div>
       <Form onSubmit={onSubmitHandler} />
       <List users={users} />
-      {!isValid && <Modal />}
+      {!isValid && <Modal onClick={onClickHandler} />}
     </div>
   );
 }
@@ -52,10 +57,8 @@ export default App;
 // Please enter a valid name and age (non empty values)
 // Okay button ✔
 
-// 4º Dismiss modal window by clicking okay and by clicking on the backdrop.
+// 4º Dismiss modal window by clicking okay and by clicking on the backdrop. ✔
 
 // 5º Display modal window that says Please enter a valid age (>0) if entered a negative age.
 
 // 6º Reset inputs when adding a user successfully.
-
-// 7º

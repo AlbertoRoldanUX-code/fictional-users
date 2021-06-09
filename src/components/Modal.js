@@ -1,6 +1,10 @@
 import React from "react";
 
-function Modal() {
+function Modal(props) {
+  const clickHandler = function () {
+    props.onClick(true);
+  };
+
   return (
     <div>
       <div className="modal">
@@ -10,9 +14,11 @@ function Modal() {
         <p className="margin-p">
           Please enter a valid name and age (non-empty values).
         </p>
-        <button className="right">Okay</button>
+        <button onClick={clickHandler} className="right">
+          Okay
+        </button>
       </div>
-      <div className="overlay"></div>
+      <div onClick={clickHandler} className="overlay"></div>
     </div>
   );
 }
