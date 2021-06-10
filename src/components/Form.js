@@ -13,6 +13,9 @@ function Form(props) {
       age: +enteredAge,
     };
     props.onSubmit(userData);
+
+    setEnteredName("");
+    setEnteredAge("");
   };
 
   const usernameHandler = function (e) {
@@ -28,11 +31,20 @@ function Form(props) {
       <form onSubmit={formHandler}>
         <div>
           <label className="label">Username</label>
-          <input className="input" onChange={usernameHandler}></input>
+          <input
+            className="input"
+            onChange={usernameHandler}
+            value={enteredName}
+          ></input>
         </div>
         <div>
           <label className="label">Age (Years)</label>
-          <input type="number" className="input" onChange={ageHandler}></input>
+          <input
+            type="number"
+            className="input"
+            onChange={ageHandler}
+            value={enteredAge}
+          ></input>
         </div>
         <button type="submit">Add User</button>
       </form>
