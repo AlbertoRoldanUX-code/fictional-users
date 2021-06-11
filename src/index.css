@@ -12,6 +12,7 @@ button {
 
 .card {
   background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
   margin: 30px auto 30px;
   max-width: 550px;
@@ -21,6 +22,10 @@ button {
 .input {
   margin-bottom: 11px;
   width: 100%;
+}
+
+input {
+  box-sizing: border-box;
 }
 
 .label {
