@@ -8,6 +8,11 @@ button {
   background-color: purple;
   color: white;
   padding: 3px 10px 3px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(167, 0, 167);
 }
 
 .card {
