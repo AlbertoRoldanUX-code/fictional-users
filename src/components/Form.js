@@ -30,16 +30,22 @@ function Form(props) {
     <Card>
       <form onSubmit={formHandler}>
         <div>
-          <label className="label">Username</label>
+          <label htmlFor="username" className="label">
+            Username
+          </label>
           <input
+            id="username"
             className="input"
             onChange={usernameHandler}
             value={enteredName}
           ></input>
         </div>
         <div>
-          <label className="label">Age (Years)</label>
+          <label htmlFor="age" className="label">
+            Age (Years)
+          </label>
           <input
+            id="age"
             type="number"
             className="input"
             onChange={ageHandler}

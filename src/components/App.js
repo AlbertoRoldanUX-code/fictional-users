@@ -73,4 +73,4 @@ export default App;
 
 // 5º Display modal window that says Please enter a valid age (>0) if entered a negative age. ✔
 
-// 6º Reset inputs when adding a user successfully.
+// 6º Reset inputs when adding a user successfully. ✔
