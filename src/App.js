@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Form from "./Form";
-import List from "./List";
-import Modal from "./Modal";
-import Modal2 from "./Modal2";
+import Form from "./components/Form";
+import List from "./components/List";
+import Modal from "./components/Modal";
+import Modal2 from "./components/Modal2";
+import Wrapper from "./components/Helpers/Wrapper";
 
 const dummyUsers = [
   {
@@ -11,7 +12,7 @@ const dummyUsers = [
     id: 1,
   },
   {
-    name: "Pumpa",
+    name: "Angela",
     age: 44,
     id: 2,
   },
@@ -50,12 +51,12 @@ function App() {
   };
 
   return (
-    <div>
+    <Wrapper>
       <Form onSubmit={onSubmitHandler} />
       <List users={users} />
       {!isValid && <Modal onClick={onClickHandler} />}
       {!isValidAge && <Modal2 onClick={onClickHandler2} />}
-    </div>
+    </Wrapper>
   );
 }
 
