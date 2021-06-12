@@ -1,29 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Card from "./Card";
 
 function Form(props) {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const formHandler = function (e) {
     e.preventDefault();
+    const enteredUsername = nameInputRef.current.value;
+    const enteredUserAge = ageInputRef.current.value;
 
     const userData = {
-      name: enteredName,
-      age: +enteredAge,
+      name: enteredUsername,
+      age: +enteredUserAge,
     };
     props.onSubmit(userData);
 
-    setEnteredName("");
-    setEnteredAge("");
-  };
-
-  const usernameHandler = function (e) {
-    setEnteredName(e.target.value);
-  };
-
-  const ageHandler = function (e) {
-    setEnteredAge(e.target.value);
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
   return (
@@ -33,12 +27,7 @@ function Form(props) {
           <label htmlFor="username" className="label">
             Username
           </label>
-          <input
-            id="username"
-            className="input"
-            onChange={usernameHandler}
-            value={enteredName}
-          ></input>
+          <input id="username" className="input" ref={nameInputRef}></input>
         </div>
         <div>
           <label htmlFor="age" className="label">
@@ -48,8 +37,7 @@ function Form(props) {
             id="age"
             type="number"
             className="input"
-            onChange={ageHandler}
-            value={enteredAge}
+            ref={ageInputRef}
           ></input>
         </div>
         <button type="submit">Add User</button>

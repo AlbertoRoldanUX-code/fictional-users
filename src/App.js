@@ -3,7 +3,6 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Modal from "./components/Modal";
 import Modal2 from "./components/Modal2";
-import Wrapper from "./components/Helpers/Wrapper";
 
 const dummyUsers = [
   {
