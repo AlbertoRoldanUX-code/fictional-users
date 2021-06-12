@@ -51,12 +51,12 @@ function App() {
   };
 
   return (
-    <Wrapper>
+    <React.Fragment>
       <Form onSubmit={onSubmitHandler} />
       <List users={users} />
       {!isValid && <Modal onClick={onClickHandler} />}
       {!isValidAge && <Modal2 onClick={onClickHandler2} />}
-    </Wrapper>
+    </React.Fragment>
   );
 }
 

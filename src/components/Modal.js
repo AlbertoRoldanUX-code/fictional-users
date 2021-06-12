@@ -1,12 +1,14 @@
 import React from "react";
 
+const Backdrop = function () {};
+
 function Modal(props) {
   const clickHandler = function () {
     props.onClick(true);
   };
 
   return (
-    <div>
+    <React.Fragment>
       <div className="modal">
         <div className="h2-div">
           <h2 className="h2">Invalid input</h2>
@@ -19,7 +21,7 @@ function Modal(props) {
         </button>
       </div>
       <div onClick={clickHandler} className="overlay"></div>
-    </div>
+    </React.Fragment>
   );
 }
 
